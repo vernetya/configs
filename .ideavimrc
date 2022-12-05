@@ -1,0 +1,78 @@
+set surround
+set is
+set showmode
+set showcmd
+set hlsearch
+set highlightedyank
+set relativenumber
+
+let g:highlightedyank_highlight_color = "rgba(213, 15, 255, 155)"
+let g:highlightedyank_highlight_duration = "800"
+" let g:incsearch#auto_nohlsearch = 1
+
+
+let mapleader = " "
+
+nnoremap x "_x
+nnoremap X "_X
+nnoremap d "_d
+nnoremap D "_D
+vnoremap c "_c
+vnoremap C "_C
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+nnoremap <leader>x ""x
+nnoremap <leader>X ""X
+nnoremap <leader>c ""c
+nnoremap <leader>C ""C
+
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+
+" markers
+nnoremap mN :action ToggleBookmark1<CR>
+nnoremap mJ :action ToggleBookmark2<CR>
+nnoremap mK :action ToggleBookmark3<CR>
+nnoremap mH :action ToggleBookmark4<CR>
+nnoremap mL :action ToggleBookmark5<CR>
+nnoremap mY :action ToggleBookmark6<CR>
+nnoremap mI :action ToggleBookmark7<CR>
+nnoremap mA :action ToggleBookmark8<CR>
+nnoremap mB :action ToggleBookmark9<CR>
+
+nnoremap `M :action GotoBookmark0<CR>
+nnoremap `N :action GotoBookmark1<CR>
+nnoremap `J :action GotoBookmark2<CR>
+nnoremap `K :action GotoBookmark3<CR>
+nnoremap `H :action GotoBookmark4<CR>
+nnoremap `L :action GotoBookmark5<CR>
+nnoremap `Y :action GotoBookmark6<CR>
+nnoremap `I :action GotoBookmark7<CR>
+nnoremap `A :action GotoBookmark8<CR>
+nnoremap `B :action GotoBookmark9<CR>
+
+
+map <leader>a :action $SelectAll<CR>
+map <leader>b :action GotoDeclaration<CR>
+map <leader>c :action $Copy<CR>
+map <leader>d :action Debug<CR>
+map <leader>f :action Find<CR>
+map <leader>g :action GotoLine<CR>
+map <leader>i :action ImplementMethods<CR>
+map <leader>o :action OverrideMethods<CR>
+map <leader>p :action ParameterInfo<CR>
+map <leader>q :action QuickJavadoc<CR>
+" map <leader>r :action $Redo<CR>
+map <leader>r :action Rust.Build<CR>
+map <leader>u :action GotoSuperMethod<CR>
+map <leader>v :action EditorCreateRectangularSelection<CR>
+map <leader>w :action EditorSelectWord<CR>
+map <leader>x :action $Cut<CR>
+map <leader>y :action EditorDeleteLine<CR>
+map <leader><Right> :action NextTab<CR>
+map <leader><Left> :action PreviousTab<CR>
+map <leader>t :action ActivateTerminalToolWindow<CR>
+
+
+set clipboard+=unnamed
