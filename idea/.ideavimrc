@@ -5,6 +5,7 @@ set showcmd
 set hlsearch
 set highlightedyank
 set relativenumber
+set number
 
 let g:highlightedyank_highlight_color = "rgba(213, 15, 255, 155)"
 let g:highlightedyank_highlight_duration = "800"
@@ -55,8 +56,8 @@ nnoremap `B :action GotoBookmark9<CR>
 
 map <leader>a :action $SelectAll<CR>
 map <leader>b :action GotoDeclaration<CR>
-map <leader>c :action $Copy<CR>
-map <leader>d :action Debug<CR>
+" map <leader>c :action $Copy<CR>
+" map <leader>d :action Debug<CR>
 map <leader>f :action Find<CR>
 map <leader>g :action GotoLine<CR>
 map <leader>i :action ImplementMethods<CR>
@@ -64,12 +65,12 @@ map <leader>o :action OverrideMethods<CR>
 map <leader>p :action ParameterInfo<CR>
 map <leader>q :action QuickJavadoc<CR>
 " map <leader>r :action $Redo<CR>
-map <leader>r :action Rust.Build<CR>
+" map <leader>r :action Rust.Build<CR>
 map <leader>u :action GotoSuperMethod<CR>
 map <leader>v :action EditorCreateRectangularSelection<CR>
 map <leader>w :action EditorSelectWord<CR>
-map <leader>x :action $Cut<CR>
-map <leader>y :action EditorDeleteLine<CR>
+" map <leader>x :action $Cut<CR>
+" map <leader>y :action EditorDeleteLine<CR>
 map <leader><Right> :action NextTab<CR>
 map <leader><Left> :action PreviousTab<CR>
 map <leader>t :action ActivateTerminalToolWindow<CR>
