@@ -1,4 +1,4 @@
-print("remap after plugin")
+-- print("remap after plugin")
 
 local telescope = require('telescope.builtin')
 local harpoon_mark = require("harpoon.mark")
