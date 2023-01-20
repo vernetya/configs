@@ -29,11 +29,13 @@ vim.keymap.set({'n', 'v'}, '<leader>x', '""x')
 vim.keymap.set({'n', 'v'}, '<leader>c', '""c')
 vim.keymap.set({'n', 'v'}, '<leader>d', '""d')
 
-vim.keymap.set('n', '<leader>w', '<cmd>write<cr>')
 
 -- copy/paste from clipboard
 vim.keymap.set({'n', 'x'}, '<leader>p', '"+p')
 vim.keymap.set({'n', 'x'}, '<leader>y', '"+y')
+
+-- dynamic replace word below the cursor
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- clear search highlight 
 vim.keymap.set('', '<leader>h', ':nohl<CR>', { silent = true } )
