@@ -7,6 +7,9 @@ set highlightedyank
 set relativenumber
 set number
 
+set smartindent
+set scrolloff=8
+
 let g:highlightedyank_highlight_color = "rgba(213, 15, 255, 155)"
 let g:highlightedyank_highlight_duration = "800"
 " let g:incsearch#auto_nohlsearch = 1
@@ -14,66 +17,94 @@ let g:highlightedyank_highlight_duration = "800"
 
 let mapleader = " "
 
-nnoremap x "_x
-nnoremap X "_X
-nnoremap d "_d
-nnoremap D "_D
-vnoremap c "_c
-vnoremap C "_C
+inoremap jj <Esc>
 
-nnoremap <leader>d ""d
-nnoremap <leader>D ""D
-nnoremap <leader>x ""x
-nnoremap <leader>X ""X
-nnoremap <leader>c ""c
-nnoremap <leader>C ""C
+vnoremap J :action MoveLineDown<CR>
+vnoremap K :action MoveLineUp<CR>
+
+" J delete line below, remap allow to keep the cursor same place
+nnoremap J mzJ`z
+
+" half space jumping keeping cursor in the middle
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" when searching, go next (n) or previous (N) keeping the cursor in the middle
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" delete (copy to void) paste
+nnoremap <leader>p viw"_dp
+xnoremap <leader>p "_dp
+nnoremap <leader>P viw"_dP
+xnoremap <leader>P "_dP
+
+" delete without copy
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+nnoremap <leader>x "_x
+vnoremap <leader>x "_x
+nnoremap <leader>c "_c
+vnoremap <leader>c "_c
+
+"end/beginning of line
+nnoremap gl $
+vnoremap gl $
+nnoremap gh _
+vnoremap gh _
+
+" redo
+nnoremap U :action $Redo<CR>
+
+" navigate the quicklist
+nnoremap <C-k> <cmd>cnext<CR>zz
+nnoremap <C-j> <cmd>cprev<CR>zz
+nnoremap <leader>k <cmd>lnext<CR>zz
+nnoremap <leader>j <cmd>lprev<CR>
+
+" fancy replace current word
+" nnoremap <leader>r [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]]
+
+nnoremap <leader>h :nohl<CR>
 
 nnoremap <c-o> :action Back<cr>
 nnoremap <c-i> :action Forward<cr>
 
 " markers
-nnoremap mN :action ToggleBookmark1<CR>
-nnoremap mJ :action ToggleBookmark2<CR>
-nnoremap mK :action ToggleBookmark3<CR>
-nnoremap mH :action ToggleBookmark4<CR>
-nnoremap mL :action ToggleBookmark5<CR>
-nnoremap mY :action ToggleBookmark6<CR>
-nnoremap mI :action ToggleBookmark7<CR>
-nnoremap mA :action ToggleBookmark8<CR>
-nnoremap mB :action ToggleBookmark9<CR>
+nnoremap <leader>t1 :action ToggleBookmark1<CR>
+nnoremap <leader>t2 :action ToggleBookmark2<CR>
+nnoremap <leader>t3 :action ToggleBookmark3<CR>
+nnoremap <leader>t4 :action ToggleBookmark4<CR>
 
-nnoremap `M :action GotoBookmark0<CR>
-nnoremap `N :action GotoBookmark1<CR>
-nnoremap `J :action GotoBookmark2<CR>
-nnoremap `K :action GotoBookmark3<CR>
-nnoremap `H :action GotoBookmark4<CR>
-nnoremap `L :action GotoBookmark5<CR>
-nnoremap `Y :action GotoBookmark6<CR>
-nnoremap `I :action GotoBookmark7<CR>
-nnoremap `A :action GotoBookmark8<CR>
-nnoremap `B :action GotoBookmark9<CR>
+nnoremap <leader>1 :action GotoBookmark1<CR>
+nnoremap <leader>2 :action GotoBookmark2<CR>
+nnoremap <leader>3 :action GotoBookmark3<CR>
+nnoremap <leader>4 :action GotoBookmark4<CR>
 
+nnoremap <C-a> :action $SelectAll<CR>
+nnoremap gd :action GotoDeclaration<CR>
+"map <leader>c :action $Copy<CR>
+"map <leader>d :action Debug<CR>
+nnoremap <leader>fs :action Find<CR>
+nnoremap <leader>ff :action FindInPath<CR>
+nnoremap <leader>fr :action FindUsages<CR>
 
-map <leader>a :action $SelectAll<CR>
-map <leader>b :action GotoDeclaration<CR>
-" map <leader>c :action $Copy<CR>
-" map <leader>d :action Debug<CR>
-map <leader>f :action Find<CR>
 map <leader>g :action GotoLine<CR>
-map <leader>i :action ImplementMethods<CR>
-map <leader>o :action OverrideMethods<CR>
-map <leader>p :action ParameterInfo<CR>
+"map <leader>i :action ImplementMethods<CR>
+"map <leader>o :action OverrideMethods<CR>
+"map <leader>p :action ParameterInfo<CR>
 map <leader>q :action QuickJavadoc<CR>
-" map <leader>r :action $Redo<CR>
+nnoremap U :action $Redo<CR>
 " map <leader>r :action Rust.Build<CR>
 map <leader>u :action GotoSuperMethod<CR>
 map <leader>v :action EditorCreateRectangularSelection<CR>
 map <leader>w :action EditorSelectWord<CR>
-" map <leader>x :action $Cut<CR>
-" map <leader>y :action EditorDeleteLine<CR>
+"map <leader>x :action $Cut<CR>
+map <leader>y :action EditorDeleteLine<CR>
 map <leader><Right> :action NextTab<CR>
 map <leader><Left> :action PreviousTab<CR>
-map <leader>t :action ActivateTerminalToolWindow<CR>
+map <leader>tt :action ActivateTerminalToolWindow<CR>
 
 
 set clipboard+=unnamed
+
