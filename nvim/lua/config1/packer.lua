@@ -20,6 +20,11 @@ vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+  -- floating terminal
+  use 'voldikss/vim-floaterm'
+
+  -- sneak
+  use 'justinmk/vim-sneak'
 
   -- color schemes
   use "Shatur/neovim-ayu"
@@ -80,6 +85,10 @@ return require('packer').startup(function(use)
       use("simrat39/rust-tools.nvim")
     }
   }
+
+  -- rust debugging
+  use 'puremourning/vimspector'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if install_plugins then

@@ -24,3 +24,21 @@ vim.keymap.set("n", "<leader>4", function() harpoon_ui.nav_file(4) end)
 -- git status
 vim.keymap.set("n", "<leader>git", vim.cmd.Git)
 
+-- floating terminal
+vim.keymap.set('n', "<leader>nt", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ")
+vim.keymap.set('n', "<leader>tt", ":FloatermToggle myfloat<CR>")
+vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")
+
+-- vimspector
+vim.keymap.set("n", "<F5>", "<cmd>call vimspector#Launch()<cr>")
+-- vim.keymap.set("n", "<F12>", "<cmd>call vimspector#Stop()<cr>")
+vim.keymap.set("n", "<F4>", "<cmd>call vimspector#Reset()<cr>")
+vim.keymap.set("n", "<F6>", "<cmd>call vimspector#Continue()<cr>")
+vim.keymap.set("n", "<F8>", "<cmd>call vimspector#StepOver()<cr>")
+vim.keymap.set("n", "<F9>", "<cmd>call vimspector#StepOut()<cr>")
+vim.keymap.set("n", "<F7>", "<cmd>call vimspector#StepIn()<cr>")
+
+vim.keymap.set('n', "Db", ":call vimspector#ToggleBreakpoint()<cr>")
+vim.keymap.set('n', "Dw", ":call vimspector#AddWatch()<cr>")
+vim.keymap.set('n', "De", ":call vimspector#Evaluate()<cr>")
+
