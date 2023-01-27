@@ -1,3 +1,7 @@
+Plug 'easymotion/vim-easymotion'
+
+set easymotion
+set sneak
 set surround
 set is
 set showmode
@@ -16,6 +20,14 @@ let g:highlightedyank_highlight_duration = "800"
 
 
 let mapleader = " "
+"map <Leader> <Plug>(easymotion-prefix)
+" nmap f <Plug>(easymotion-f)
+" disable all default mapping of easymotion
+let g:EasyMotion_do_mapping=0
+
+map <leader><leader>F <Plug>(easymotion-F)
+map <leader><leader>f <Plug>(easymotion-bd-f)
+
 
 inoremap jj <Esc>
 
@@ -25,19 +37,9 @@ vnoremap K :action MoveLineUp<CR>
 " J delete line below, remap allow to keep the cursor same place
 nnoremap J mzJ`z
 
-" half space jumping keeping cursor in the middle
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
-
-" when searching, go next (n) or previous (N) keeping the cursor in the middle
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
 " delete (copy to void) paste
-nnoremap <leader>p viw"_dp
-xnoremap <leader>p "_dp
-nnoremap <leader>P viw"_dP
-xnoremap <leader>P "_dP
+nnoremap <leader>p viw"_dP
+xnoremap <leader>p "_dP
 
 " delete without copy
 nnoremap <leader>d "_d
@@ -56,14 +58,6 @@ vnoremap gh _
 " redo
 nnoremap U :action $Redo<CR>
 
-" navigate the quicklist
-nnoremap <C-k> <cmd>cnext<CR>zz
-nnoremap <C-j> <cmd>cprev<CR>zz
-nnoremap <leader>k <cmd>lnext<CR>zz
-nnoremap <leader>j <cmd>lprev<CR>
-
-" fancy replace current word
-" nnoremap <leader>r [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]]
 
 nnoremap <leader>h :nohl<CR>
 
@@ -81,30 +75,22 @@ nnoremap <leader>2 :action GotoBookmark2<CR>
 nnoremap <leader>3 :action GotoBookmark3<CR>
 nnoremap <leader>4 :action GotoBookmark4<CR>
 
-nnoremap <C-a> :action $SelectAll<CR>
+
 nnoremap gd :action GotoDeclaration<CR>
-"map <leader>c :action $Copy<CR>
-"map <leader>d :action Debug<CR>
 nnoremap <leader>fs :action Find<CR>
 nnoremap <leader>ff :action FindInPath<CR>
 nnoremap <leader>fr :action FindUsages<CR>
 
 map <leader>g :action GotoLine<CR>
-"map <leader>i :action ImplementMethods<CR>
-"map <leader>o :action OverrideMethods<CR>
-"map <leader>p :action ParameterInfo<CR>
-map <leader>q :action QuickJavadoc<CR>
-nnoremap U :action $Redo<CR>
-" map <leader>r :action Rust.Build<CR>
 map <leader>u :action GotoSuperMethod<CR>
 map <leader>v :action EditorCreateRectangularSelection<CR>
 map <leader>w :action EditorSelectWord<CR>
-"map <leader>x :action $Cut<CR>
-map <leader>y :action EditorDeleteLine<CR>
+
 map <leader><Right> :action NextTab<CR>
 map <leader><Left> :action PreviousTab<CR>
+
+
 map <leader>tt :action ActivateTerminalToolWindow<CR>
 
 
 set clipboard+=unnamed
-
