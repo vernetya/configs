@@ -1,0 +1,18 @@
+{
+    "editor.lineNumbers": "relative",
+    "rust-analyzer.inlayHints.discriminantHints.enable": "always",
+    "workbench.colorCustomizations": {
+        // Name of the theme you are currently using
+        "[Default Dark+]": {
+            "editorInlayHint.foreground": "#868686f0",
+            "editorInlayHint.background": "#3d3d3d48",
+            // Overrides for specific kinds of inlay hints
+            "editorInlayHint.typeForeground": "#868686f0",
+            "editorInlayHint.typeBackground": "#3d3d3d48",
+            "editorInlayHint.parameterForeground": "#868686f0",
+            "editorInlayHint.parameterBackground": "#3d3d3d48"
+        }
+    },
+    "numberedBookmarks.navigateThroughAllFiles": "replace",
+    "editor.cursorSurroundingLines": 9999
+}
