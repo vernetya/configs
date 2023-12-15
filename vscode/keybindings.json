@@ -1,0 +1,77 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "alt+/",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+oem_2",
+        "command": "-editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+alt+t",
+        "command": "terminalCommandKeys.run",
+        "args": {
+            "cmd": "cargo nextest run"
+        }
+    },
+    {
+        "key": "ctrl+alt+n",
+        "command": "terminalCommandKeys.run",
+        "args": {
+            "cmd": "cargo nextest run --no-capture"
+        }
+    },
+    {
+        "key": "ctrl+alt+r",
+        "command": "terminalCommandKeys.run",
+        "args": {
+            "cmd": "cargo run"
+        }
+    },
+    {
+        "key": "ctrl+f g",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+f c",
+        "command": "workbench.action.focusActiveEditorGroup"
+    },
+    {
+        "key": "ctrl+f e",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+f t",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-workbench.action.terminal.focus",
+        "when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+    },
+    {
+        "key": "ctrl+f t",
+        "command": "workbench.action.togglePanel",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+f g",
+        "command": "workbench.view.scm",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+f e",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "filesExplorerFocus"
+    }
+]
