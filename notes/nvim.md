@@ -21,3 +21,13 @@ e.g. add it to the `.profile`
 ````
 PATH="$HOME/bin/lua-ls/bin:$PATH"
 ````
+
+
+## Python
+
+using `python-lsp-server`. See [here](https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md)
+as the expected way to install third party for pylsp. Unfortunalty for now `PylspInstall` command is not found, installed for some reason (likely dependencies 
+order issues)
+
+Then do `:LspInfo` when python lsp is loaded. This provides the virtual env on which to manually install third party plugins
+like `pylsp-isort` or `python-lsp-back`.
