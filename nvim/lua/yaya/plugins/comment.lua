@@ -1,8 +1,12 @@
 return {
     "numToStr/Comment.nvim",
     lazy = false,
-    config = function ()
+    config = function()
         local comment = require("Comment")
-        comment.setup({})
+        comment.setup({
+            toggler = {
+                line = "<A-/>",
+            }
+        })
     end
 }
