@@ -21,11 +21,11 @@ vim.opt.incsearch = true
 
 -- indent config -----------------------------------------
 vim.opt.expandtab = true -- transform tab into spaces, to put a real tab => CTRL-V<Tab>
--- vim.opt.autoindent = true
-vim.opt.autoindent = smartindent 
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- misc visual config ----------------------------------
 vim.opt.termguicolors = true -- better color range
@@ -35,8 +35,18 @@ vim.opt.wrap = false
 vim.opt.colorcolumn = "120"
 vim.opt.list = true
 vim.opt.listchars = "space:·,trail:·,tab:>-"
--- vim.opt.cursorline = true -- highlight the current cursor line
+vim.opt.cursorline = true -- highlight the current cursor line
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+-- vim.opt.cmdheight = 2 -- more space for the command line
 
+-- completion
+vim.opt.completeopt = {"menuone", "noselect"}
+vim.opt.updatetime = 800 -- faster completion (4000ms default)
+
+-- other
+vim.opt.swapfile = false
+vim.opt.shortmess:append "c"                           -- don't give |ins-completion-menu| messages
 
 -- clipboard
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register

@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    -- "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp",
     -- { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
@@ -10,13 +10,13 @@ return {
     local lspconfig = require("lspconfig")
 
     -- import cmp-nvim-lsp plugin
-    -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap -- for conciseness
 
     local opts = { noremap = true, silent = true }
-    local on_attach = function(client, buf_number)
-      opts.buffer = buf_number
+    local on_attach = function(client, buf_nbr)
+      opts.buffer = buf_nbr
 
       -- set keybinds
       -- opts.desc = "Show LSP references"
@@ -80,11 +80,11 @@ return {
 
 
     -- used to enable autocompletion (assign to every lsp server config)
-    -- local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
---      capabilities = capabilities,
+      capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua
         Lua = {
