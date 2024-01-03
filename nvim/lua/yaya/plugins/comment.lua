@@ -4,9 +4,9 @@ return {
     config = function()
         local comment = require("Comment")
         comment.setup({
-            toggler = {
-                line = "<A-/>",
-            }
+            -- toggler = {
+            --     line = "<A-/>",
+            -- }
         })
     end
 }
