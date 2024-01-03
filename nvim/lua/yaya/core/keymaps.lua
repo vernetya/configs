@@ -73,14 +73,3 @@ keymap.set("n", "<A-k>", ":m .-2<CR>==", opts)
 
 -- replace (delete into void)
 keymap.set({ "v", "x" }, "p", '"_dP', opts)
-
--- auto commands
-local augroup = vim.api.nvim_create_augroup('user_cmds', { clear = true })
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-    group = augroup,
-    desc = 'Highlight on yank',
-    callback = function(event)
-        vim.highlight.on_yank({ higroup = 'Visual', timeout = 1000 })
-    end
-})
