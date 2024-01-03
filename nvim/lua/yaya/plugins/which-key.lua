@@ -18,6 +18,7 @@ return {
                 t = { name = "+tab" },
                 c = { name = "+code" },
                 f = { name = "+fzf" },
+                e = { name = "+explorer" },
             },
         })
     end,
