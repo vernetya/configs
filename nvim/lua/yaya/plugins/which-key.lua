@@ -15,10 +15,11 @@ return {
         wk.register({
             -- name/describe group
             ["<leader>"] = {
-                t = { name = "+tab" },
-                c = { name = "+code" },
+                T = { name = "+tab" },
+                t = { name = "+test" },
                 f = { name = "+fzf" },
                 e = { name = "+explorer" },
+                c = { name = "+code" },
             },
         })
     end,

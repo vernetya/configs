@@ -16,18 +16,19 @@ keymap.set("n", "U", "<C-R>", { desc = "Exit insert using jj" })
 -- paste current word (w or W) without copying replacement
 keymap.set({ 'n', 'x', 'v' }, '<leader>p', 'viw\"_dP', { desc = "paste into current word" })
 keymap.set({ 'n', 'x', 'v' }, '<leader>pp', '\"_ddP', { desc = "paste into current Line" })
+keymap.set({ 'n', 'x', 'v' }, 'q', '\"_d', { desc = "delete to void" })
 
 -- clear search highlight
 keymap.set('', '<leader>h', ':nohl<CR>', { silent = true })
 
 
 -- tab
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-keymap.set("n", "<leader>txo", "<cmd>tabonly<CR>", { desc = "Close all other tab" })
+keymap.set("n", "<leader>To", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>Tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+keymap.set("n", "<leader>Txo", "<cmd>tabonly<CR>", { desc = "Close all other tab" })
 keymap.set("n", "<leader><right>", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader><left>", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+keymap.set("n", "<leader>Tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 -- navigation
 opts.desc = "go left window"
