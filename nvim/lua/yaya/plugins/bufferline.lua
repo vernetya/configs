@@ -16,5 +16,13 @@ return {
             -- left_trunc_marker = "",
             -- right_trunc_marker = "",
         },
+        highlights = {
+            buffer_selected = {
+                fg = '#ffffff',
+                bg = '#0A7ACA',
+                bold = true,
+                italic = true,
+            },
+        }
     },
 }
