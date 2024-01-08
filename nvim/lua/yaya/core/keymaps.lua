@@ -56,8 +56,10 @@ keymap.set("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 opts.desc = "go next buffer"
+keymap.set("n", "b]", ":bnext<CR>", opts)
 keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 opts.desc = "go previous buffer"
+keymap.set("n", "b[", ":bprevious<CR>", opts)
 keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Stay in indent mode
