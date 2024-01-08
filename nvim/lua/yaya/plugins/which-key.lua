@@ -20,6 +20,7 @@ return {
                 f = { name = "+fzf" },
                 e = { name = "+explorer" },
                 c = { name = "+code" },
+                a = { name = "+harpoon" },
             },
         })
     end,
