@@ -1,18 +1,21 @@
-Plug 'easymotion/vim-easymotion'
-
-set easymotion
-set sneak
 set surround
 set is
 set showmode
 set showcmd
 set hlsearch
+set sneak
 set highlightedyank
 set relativenumber
 set number
+set which-key
+set NERDTree
+" quick scope, highlighting letter for moving
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 set smartindent
-set scrolloff=8
+set scrolloff=999
+" set timeoutlen=7000
 
 let g:highlightedyank_highlight_color = "rgba(213, 15, 255, 155)"
 let g:highlightedyank_highlight_duration = "800"
@@ -25,72 +28,150 @@ let mapleader = " "
 " disable all default mapping of easymotion
 let g:EasyMotion_do_mapping=0
 
-map <leader><leader>F <Plug>(easymotion-F)
-map <leader><leader>f <Plug>(easymotion-bd-f)
+set clipboard+=unnamed
 
+inoremap jk <Esc>
 
-inoremap jj <Esc>
+" ------ MOVE/NAVIGATION
+map J 4j
+map K 4k
 
-vnoremap J :action MoveLineDown<CR>
-vnoremap K :action MoveLineUp<CR>
+noremap H _
+noremap L $
 
-" J delete line below, remap allow to keep the cursor same place
-nnoremap J mzJ`z
+nnoremap <C-i> :action Back<cr>
+nnoremap <C-o> :action Forward<cr>
 
-" delete (copy to void) paste
-nnoremap <leader>p viw"_dP
-xnoremap <leader>p "_dP
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
 
-" delete without copy
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-nnoremap <leader>x "_x
-vnoremap <leader>x "_x
-nnoremap <leader>c "_c
-vnoremap <leader>c "_c
-
-"end/beginning of line
-nnoremap gl $
-vnoremap gl $
-nnoremap gh _
-vnoremap gh _
-
-" redo
-nnoremap U :action $Redo<CR>
-
-
-nnoremap <leader>h :nohl<CR>
-
-nnoremap <c-o> :action Back<cr>
-nnoremap <c-i> :action Forward<cr>
-
-" markers
-nnoremap <leader>t1 :action ToggleBookmark1<CR>
-nnoremap <leader>t2 :action ToggleBookmark2<CR>
-nnoremap <leader>t3 :action ToggleBookmark3<CR>
-nnoremap <leader>t4 :action ToggleBookmark4<CR>
-
-nnoremap <leader>1 :action GotoBookmark1<CR>
-nnoremap <leader>2 :action GotoBookmark2<CR>
-nnoremap <leader>3 :action GotoBookmark3<CR>
-nnoremap <leader>4 :action GotoBookmark4<CR>
-
+nnoremap <leader>g :action GotoLine<CR>
 
 nnoremap gd :action GotoDeclaration<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+nnoremap ]w :action GotoNextWarning<CR>
+nnoremap [w :action GotoPreviousWarning<CR>
+
+noremap <TAB> :action GotoNextBookmark<CR>
+noremap <S-TAB> :action GotoPreviousBookmark<CR>
+
+" in insert mode, map arrow to vim move letter with prefix
+inoremap <C-l> <Right>
+inoremap <C-h> <Left>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+
+" ------ FindInPath<CR>  " handled by IDE, search text everywhere
+" from IDE: Shift-Shift to open search everywhere popup
+" map <C-S-t> :action GotoText<cr>
+map <C-S-f> :action GotoFile<cr>
+map <C-S-a> :action GotoAction<cr>
+map <C-S-s> :action GotoSymbol<cr>
+
+
 nnoremap <leader>fs :action Find<CR>
 nnoremap <leader>ff :action FindInPath<CR>
 nnoremap <leader>fr :action FindUsages<CR>
 
-map <leader>g :action GotoLine<CR>
-map <leader>u :action GotoSuperMethod<CR>
-map <leader>v :action EditorCreateRectangularSelection<CR>
-map <leader>w :action EditorSelectWord<CR>
+" K Jump
+nnoremap <leader><leader>f :action KJumpAction<cr>
+nnoremap <C-f> :action KJumpAction.Word1<cr>
+nnoremap <C-l> :action KJumpAction.Char2<cr>
 
-map <leader><Right> :action NextTab<CR>
-map <leader><Left> :action PreviousTab<CR>
+nnoremap <leader>h :nohl<CR>
+
+" ------ TAB/SPLIT
+" from IDE: Alt+arrow = go prev/next Tab
+" from IDE: Alt+Shift+arrow = go prev/next Split
+" from IDE: CTRL+ww to switch between split windows
+" from IDE: Ctrl F4 to close current, Ctrl-Shift-F4 to close all but current
+
+noremap <leader>wv :action MoveTabRight<CR>
+noremap <leader>wu :action UnsplitAll<CR>
+noremap <leader>wm :action MoveEditorToOppositeTabGroup<CR>
+
+map <F3> :action ToggleZenMode<CR>
+noremap <leader>mm :action MaximizeEditorInSplit<CR>
+
+" ------ EDITION
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" delete without yanking
+noremap <leader>d "_d
+noremap c "_c
+noremap C "_C
+noremap s "_s
+noremap S "_S
+noremap x "_x
+
+vnoremap <C-S-j> :action MoveLineDown<CR>
+vnoremap <C-S-k> :action MoveLineUp<CR>
+nnoremap <C-S-j> :action MoveLineDown<CR>
+nnoremap <C-S-k> :action MoveLineUp<CR>
+
+" J delete line below, remap allow to keep the cursor same place
+nnoremap Q mzJ`z
 
 
-map <leader>tt :action ActivateTerminalToolWindow<CR>
+" delete (copy to void) paste
+nnoremap <leader>p "_diwP
+xnoremap <leader>p "_dP
+
+" copy until end of line
+nnoremap <C-]> y$
+
+" redo
+nnoremap U :action $Redo<CR>
+
+" refactor
+map <F2> :action RenameElement<CR>
+map <S-F2> :action RefactoringMenu<CR>
+
+" indentation
+vnoremap < <gv;
+vnoremap > >gv
+
+" --------- BOOKMARK
+" noremap <F11> :action ToggleBookmark<CR>
+map <F9> :action ToggleLineBreakpoint<CR>
+
+nnoremap <leader><leader>1 :action SetHarpoon1<CR>
+nnoremap <leader><leader>2 :action SetHarpoon2<CR>
+nnoremap <leader><leader>3 :action SetHarpoon3<CR>
+nnoremap <leader><leader>4 :action SetHarpoon4<CR>
+nnoremap <leader><leader>5 :action SetHarpoon5<CR>
+
+nnoremap <leader>1 :action GotoHarpoon1<CR>
+nnoremap <leader>2 :action GotoHarpoon2<CR>
+nnoremap <leader>3 :action GotoHarpoon3<CR>
+nnoremap <leader>4 :action GotoHarpoon4<CR>
+nnoremap <leader>5 :action GotoHarpoon5<CR>
+
+nmap <C-m> :action ShowHarpoon<cr>
+nmap <C-a> :action AddToHarpoon<cr>
 
 
-set clipboard+=unnamed
+"go to global marks
+nnoremap '1 `1
+nnoremap '2 `2
+nnoremap '3 `3
+nnoremap '4 `4
+nnoremap '5 `5
+
+
+" ------ OTHER TOOLS
+
+"show list of action ids
+nnoremap <leader><leader>sa :actionlist<CR>
+
+
+nnoremap <leader>tt :action ActivateTerminalToolWindow<CR>
+" keymap in IDE for switching Dock/Floating window
+
+
+map <C-n> :NERDTree<CR>
+
